@@ -1,4 +1,4 @@
-const graphql = reauire('graphql');
+const graphql = require('graphql');
 
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
 
