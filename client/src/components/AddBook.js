@@ -12,10 +12,10 @@ const getAuthorsQuery = gql`
 `;
 
 const AddBook = () => {
-  const { loading, error, data } = useQuery(getBooksQuery);
+  const { loading, error, data } = useQuery(getAuthorsQuery);
 
   const displayAuthors = () => {
-    if(data.loading){
+    if(loading){
       return(<option disabled>Loading authors</option>);
     } else {
       return data.authors.map((author) => (<option key={ author.id } value={author.id}>{ author.name }</option>));
@@ -35,7 +35,7 @@ const AddBook = () => {
           <label>Author:</label>
           <select>
               <option>Select author</option>
-              { this.displayAuthors() }
+              {displayAuthors()}
           </select>
       </div>
       <button>+</button>
