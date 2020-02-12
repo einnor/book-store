@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
 const { getBookQuery } = '../queries/queries';
 
-const BookDetails = () => {
-  const { loading, error, data } = useQuery(getBookQuery);
+const BookDetails = ({ bookId }) => {
+  const { loading, error, data } = useQuery(getBookQuery, { variables: { id: bookId }});
 
   return (
     <div className="book-details">

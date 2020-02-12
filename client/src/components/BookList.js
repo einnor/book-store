@@ -24,7 +24,11 @@ const BookList = () => {
                 ))
               }
             </ul>
-            <BookDetails />
+            {
+              selected ? (
+                <BookDetails bookId={selected} />
+              ) : null
+            }
           </>
         ) : null
       }
