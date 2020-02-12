@@ -1,23 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-
-const { getBookQuery } = '../queries/queries';
+import { getBookQuery } from '../queries/queries';
 
 const BookDetails = ({ bookId }) => {
   const { loading, error, data } = useQuery(getBookQuery, { variables: { id: bookId }});
 
-  const { book } = data;
   return (
     <div className="book-details">
       {
-        book ? (
+        loading ? (
+          <div>Loading book details...</div>
+        ) : data.book ? (
           <div>
-            <h2>{book.name}</h2>
-            <p>{book.genre}</p>
-            <p>{book.author.name}</p>
+            <h2>{data.book.name}</h2>
+            <p>{data.book.genre}</p>
+            <p>{data.book.author.name}</p>
             <p>All books by this author</p>
             <ul className="other-books">
-              {book.author.books.map((book) => (
+              {data.book.author.books.map((book) => (
                 <li key={book.id}>{book.name}</li>
               ))}
             </ul>
@@ -28,5 +28,5 @@ const BookDetails = ({ bookId }) => {
   )
 }
 
-export default BookDetails;
+export default React.memo(BookDetails);
 
