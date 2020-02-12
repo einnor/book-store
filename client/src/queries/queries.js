@@ -10,7 +10,7 @@ const getBooksQuery = gql`
 `;
 
 const getBookQuery = gql`
-  query GetBook($id: String) {
+  query($id: String) {
     book(id: $id) {
       id
       name
@@ -50,4 +50,5 @@ export {
   getBooksQuery,
   getAuthorsQuery,
   addBookMutation,
+  getBookQuery,
 }
