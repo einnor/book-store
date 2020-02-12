@@ -4,7 +4,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import BookList from './components/BookList';
 import AddBook from './components/AddBook';
-import './App.css';
 
 // Set up apollo client
 const client = new ApolloClient({

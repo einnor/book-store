@@ -58,7 +58,13 @@ const AddBook = () => {
           </select>
       </div>
       <button onClick={onSubmit}>
-        {results.loading ? 'Adding...' : '+'}
+        {
+          results.loading ? (
+            <span className="loader"></span>
+          ) : (
+            <span className="add-button">+</span>
+          )
+        }
       </button>
 
   </div>
