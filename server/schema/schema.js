@@ -101,8 +101,8 @@ const Mutation = new GraphQLObjectType({
         authorId: { type: GraphQLID },
       },
       resolve (parent, args) {
-        const { name, genre, authorId } = args
-        const Book = new Book({ name, genre, authorId });
+        const { name, genre, authorId } = args;
+        const book = new Book({ name, genre, authorId });
         return book.save();
       }
     }
