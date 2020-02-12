@@ -29,6 +29,7 @@ const AddBook = () => {
         query: getBooksQuery,
       }],
     });
+    resetState();
   };
 
   const displayAuthors = () => {
