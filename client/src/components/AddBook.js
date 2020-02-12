@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
-import { getAuthorsQuery } from '../queries/queries';
+import { getAuthorsQuery, addBookMutation } from '../queries/queries';
+
+const initialState = {
+  name: '',
+  genre: '',
+  authorId: '',
+};
 
 const AddBook = () => {
   const { loading, error, data } = useQuery(getAuthorsQuery);
-  const [state, setState] = useState({
-    name: '',
-    genre: '',
-    authorId: '',
-  });
+  const [addBook, results] = useMutation(addBookMutation);
+  const [state, setState] = useState(initialState);
+
+  const resetState = () => setState(initialState);
 
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
+  };
+
+  const onSubmit = () => {
+    const { name, genre, authorId } = state;
+    addBook({ variables: { name, genre, authorId } });
+    resetState();
   };
 
   const displayAuthors = () => {
@@ -41,7 +52,9 @@ const AddBook = () => {
               {displayAuthors()}
           </select>
       </div>
-      <button>+</button>
+      <button onClick={onSubmit}>
+        {results.loading ? 'Adding...' : '+'}
+      </button>
 
   </form>
   )
