@@ -9,7 +9,9 @@ const BookDetails = ({ bookId }) => {
     <div className="book-details">
       {
         loading ? (
-          <div>Loading book details...</div>
+          <div className="loader-wrapper">
+            <span className="loader"></span>
+          </div>
         ) : data.book ? (
           <div>
             <h2>{data.book.name}</h2>

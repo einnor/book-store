@@ -76,7 +76,17 @@ body {
   height: 50px;
 }
 
-.add-book button .loader {
+.loader-wrapper {
+  position: relative;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.loader {
   height: 0;
   width: 0;
   padding: 13px;
