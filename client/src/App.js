@@ -1,8 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import ApolloClient from 'apollo-boost';
 
 import BookList from './components/BookList';
 import './App.css';
+
+// Set up apollo client
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql'
+});
 
 function App() {
   return (
