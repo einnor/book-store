@@ -15,9 +15,19 @@ const BookList = () => {
   const { loading, error, data } = useQuery(getBooksQuery);
   return (
     <div>
-      <ul className="book-list">
-        <li>Book Name</li>
-      </ul>
+      {
+        loading ? (
+          <div>Loading books...</div>
+        ) : data.books && data.books.length ? (
+          <ul className="book-list">
+            {
+              data.books.map((book) => (
+                <li key={book.id}>{book.name}</li>
+              ))
+            }
+          </ul>
+        ) : null
+      }
     </div>
   )
 }
