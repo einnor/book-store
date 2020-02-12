@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
-import { getAuthorsQuery, addBookMutation } from '../queries/queries';
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../queries/queries';
 
 const initialState = {
   name: '',
@@ -23,8 +23,12 @@ const AddBook = () => {
 
   const onSubmit = () => {
     const { name, genre, authorId } = state;
-    addBook({ variables: { name, genre, authorId } });
-    resetState();
+    addBook({
+      variables: { name, genre, authorId },
+      refetchQueries:[{
+        query: getBooksQuery,
+      }],
+    });
   };
 
   const displayAuthors = () => {
@@ -36,7 +40,7 @@ const AddBook = () => {
   }
 
   return (
-    <form className="add-book">
+    <div className="add-book">
       <div className="field">
           <label>Book name:</label>
           <input type="text" name="name" onChange={onInputChange} />
@@ -56,7 +60,7 @@ const AddBook = () => {
         {results.loading ? 'Adding...' : '+'}
       </button>
 
-  </form>
+  </div>
   )
 }
 
