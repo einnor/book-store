@@ -2,14 +2,7 @@ import React from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 
-const getAuthorsQuery = gql`
-  {
-    authors {
-      id
-      name
-    }
-  }
-`;
+import { getAuthorsQuery } from '../queries/queries';
 
 const AddBook = () => {
   const { loading, error, data } = useQuery(getAuthorsQuery);
@@ -18,7 +11,7 @@ const AddBook = () => {
     if(loading){
       return(<option disabled>Loading authors</option>);
     } else {
-      return data.authors.map((author) => (<option key={ author.id } value={author.id}>{ author.name }</option>));
+      return data.authors.map((author) => (<option key={author.id} value={author.id}>{author.name}</option>));
     }
 }
   return (
