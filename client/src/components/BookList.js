@@ -16,7 +16,9 @@ const BookList = () => {
   return (
     <div>
       {
-        loading ? (
+        error ? (
+          <div>An error occurred!</div>
+        ) : loading ? (
           <div>Loading books...</div>
         ) : data.books && data.books.length ? (
           <ul className="book-list">
