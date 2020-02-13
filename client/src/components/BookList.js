@@ -20,7 +20,7 @@ const BookList = () => {
             <ul className="book-list">
               {
                 data.books.map((book) => (
-                  <li key={book.id} onClick={() => setSelected(book.id)}>{book.name}</li>
+                  <li key={book.id} className={book.id === selected ? 'selected-book' : ''} onClick={() => setSelected(book.id)}>{book.name}</li>
                 ))
               }
             </ul>

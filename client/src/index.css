@@ -35,6 +35,14 @@ body {
   color: #880E4F;
 }
 
+.book-list .selected-book {
+  border: 1px solid #880E4F;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #880E4F;
+}
+
 .add-book {
   background: #fff;
   padding: 20px;
